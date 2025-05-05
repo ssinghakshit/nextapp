@@ -28,11 +28,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         suppressHydrationWarning
       >
-        <header className="bg-slate-1000 text-white p-4 text-center">
+        <header className="bg-black text-white p-4 text-center">
           <p>Trying out Nextjs</p>
         </header>
         {children}
-        <footer className="bg-slate-1000 text-white p-4 text-center">
+        <footer className="bg-black text-white p-4 text-center">
           <p>Akshit Singh</p>
         </footer>
       </body>
