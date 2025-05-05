@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Navigation } from "./components/navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,7 +30,8 @@ export default function RootLayout({
         suppressHydrationWarning
       >
         <header className="bg-black text-white p-4 text-center">
-          <p>Trying out Nextjs</p>
+          {/* <p>Trying out Nextjs</p> */}
+          <Navigation />
         </header>
         {children}
         <footer className="bg-black text-white p-4 text-center">
