@@ -25,9 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`} suppressHydrationWarning
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
+        <header className="bg-slate-1000 text-white p-4 text-center">
+          <p>Trying out Nextjs</p>
+        </header>
         {children}
+        <footer className="bg-slate-1000 text-white p-4 text-center">
+          <p>Akshit Singh</p>
+        </footer>
       </body>
     </html>
   );
