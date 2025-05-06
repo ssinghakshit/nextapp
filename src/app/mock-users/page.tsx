@@ -1,3 +1,6 @@
+import { revalidatePath } from "next/cache";
+
+
 type mockUser = {
   id: number;
   name: string;
@@ -21,6 +24,7 @@ export default async function mockUsers() {
       }
     );
     const newUser = await res.json();
+    revalidatePath("/mock-users");
     console.log("new user", newUser);
   }
   console.log("Server rendered");
