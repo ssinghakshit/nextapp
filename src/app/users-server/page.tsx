@@ -7,6 +7,7 @@ type User = {
 };
 
 export default async function UserServer() {
+    await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch("https://jsonplaceholder.typicode.com/users");
   const users = await res.json();
   console.log("Server rendered");
