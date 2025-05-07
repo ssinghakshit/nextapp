@@ -11,23 +11,28 @@ export default async function mockUsers() {
   const userObject = await currentUser();
   console.log("Auth object", authObject);
   console.log("User object", userObject);
-  
+
+  const apiUrl = process.env.MOCK_SECRET_API_URL;
+  if (!apiUrl) {
+    throw new Error("API URL is not defined in the environment variables");
+  }
   await new Promise((resolve) => setTimeout(resolve, 2000));
-  const res = await fetch("https://681a320c1ac11556350830eb.mockapi.io/users");
+  const res = await fetch(apiUrl);
   const users = await res.json();
   async function addUser(formData: FormData) {
     "use server";
+    const apiUrl = process.env.MOCK_SECRET_API_URL;
+    if (!apiUrl) {
+      throw new Error("API URL is not defined in the environment variables");
+    }
     const name = formData.get("name");
-    const res = await fetch(
-      "https://681a320c1ac11556350830eb.mockapi.io/users",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ name }),
-      }
-    );
+    const res = await fetch(apiUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name }),
+    });
     const newUser = await res.json();
     revalidatePath("/mock-users");
     console.log("new user", newUser);
