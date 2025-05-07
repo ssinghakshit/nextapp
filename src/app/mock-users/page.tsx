@@ -11,6 +11,7 @@ export default async function mockUsers() {
   const userObject = await currentUser();
   console.log("Auth object", authObject);
   console.log("User object", userObject);
+  
   await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch("https://681a320c1ac11556350830eb.mockapi.io/users");
   const users = await res.json();
