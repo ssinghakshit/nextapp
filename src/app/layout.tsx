@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "./components/navigation";
-
+import { ClerkProvider } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,20 +25,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
-      >
-        <header className="bg-black text-white p-4 text-center">
-          {/* <p>Trying out Nextjs</p> */}
-          <Navigation />
-        </header>
-        {children}
-        <footer className="bg-black text-white p-4 text-center">
-          <p>Akshit Singh</p>
-        </footer>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          suppressHydrationWarning
+        >
+          <header className="bg-black text-white p-4 text-center">
+            {/* <p>Trying out Nextjs</p> */}
+            <Navigation />
+          </header>
+          {children}
+          <footer className="bg-black text-white p-4 text-center">
+            <p>Akshit Singh</p>
+          </footer>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
