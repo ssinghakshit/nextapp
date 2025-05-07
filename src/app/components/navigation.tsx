@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, UserButton } from "@clerk/nextjs";
 
 export const Navigation = () => {
   const pathname = usePathname();
@@ -32,6 +32,7 @@ export const Navigation = () => {
         Product 1
       </Link>
       <SignInButton mode="modal" />
+      <UserButton/>
     </nav>
   );
 };
